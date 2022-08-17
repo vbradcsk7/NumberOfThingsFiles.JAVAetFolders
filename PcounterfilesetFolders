@@ -1,0 +1,144 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.mycompany.countinglines;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Arrays;
+import static java.util.Locale.filter;
+import java.io.LineNumberReader;
+import java.util.Scanner;
+/**
+ *
+ * @author Teetsyvbradcsk7
+ */
+public class countingfold1 {
+
+    /**
+     * @param args the command line arguments
+     */
+   
+    public static void main(String args[]) throws FileNotFoundException {
+        
+        /*
+        File file= new File("C:\\Users\\Teetsy\\Documents\\NetBeansProjects\\ordenarListCircular");
+        //int cuentaesto  = carpeta.listFiles().length; //la longitud
+        //System.out.println("Hay en total "+cuentaesto+ " archivos");
+        //inicio variables contadoras
+        int cuentacarpetas=0;
+        int cuentaarchivos=0;
+       
+        //mostrando en el arreglo y en row todos los archivos y carpetas
+        String str[]=file.list();///con metodo .list() el cual lista mis archivos
+        
+        for (String s:str) {//con el for se recorre la lista evocada en forma de array (se recorre el arregelo)
+            File lealo1=new File(file,s);//se le pasa al metodo el "file" y parametro 's'
+            
+            if (lealo1.isFile()) {//pregunta q si es file la cuente
+                cuentaarchivos++;// y luego de contar la acumule en la variable 'cuentaarchivos'
+                
+            }
+            if (lealo1.isDirectory()) {//pregunta q si es una carpeta la cuente
+                cuentacarpetas++;// y luego de contar la acumule en la variable 'cuentaarchivos'
+                
+            }
+            System.out.println(lealo1);//muestra los directorios los archivos que incluyen las extensiones de archivos
+            
+        }
+        
+        System.out.println("En total Ud tiene "+cuentacarpetas+" Carpetas y "+cuentaarchivos+" archivos.");
+        
+        */
+        
+        
+        // para leer la cantidad de lineas del codigo
+        
+        File myarchivoenjava = new File("C:\\Users\\Teetsy\\Documents\\NetBeansProjects\\ordenarListCircular\\src\\ordenarlistcircular\\principal.java");
+        if (myarchivoenjava.exists()) {//pregunta si eso existe
+            try{
+                FileReader lealoya = new FileReader(myarchivoenjava); //lector del fichero
+                LineNumberReader cuentalineas = new LineNumberReader(lealoya);//cuenta lineas
+                int cuentalineasencero=0;//contador en cero y acumula
+                try{
+                    while(cuentalineas.readLine()!=null){///cuentalineas.readLine()!=null
+                        cuentalineasencero++;//acumulador y cuenta tambien
+                        
+                    }
+                    System.out.println("Hay en total "+cuentalineasencero+" lineas en el archivo .JAVA ubicado en "+ myarchivoenjava);
+                    
+                }catch(IOException er){
+                    er.printStackTrace();//linea de error
+                }
+            }catch(FileNotFoundException er){
+                er.printStackTrace();//linea de error
+            }
+            
+        }
+        
+        //Aca se van a contar el numero de clases en el archivo de .JAVA
+        
+        Scanner buscandoclases = new Scanner(new File("C:\\Users\\Teetsy\\Documents\\NetBeansProjects\\ordenarListCircular\\src\\ordenarlistcircular\\principal.java"));
+        int cuentaclases=0;
+        
+        
+        while(buscandoclases.hasNext()){
+            String escaneorapido=  buscandoclases.nextLine();
+            if(escaneorapido.indexOf("class")!= -1){
+                cuentaclases++;
+            }
+            
+        }
+        System.out.println("Hay un total de "+cuentaclases+ " clases");
+        
+        
+        
+        //Hallando los metodos        
+        Scanner buscametodosss = new Scanner(new File("C:\\Users\\Teetsy\\Documents\\NetBeansProjects\\ordenarListCircular\\src\\ordenarlistcircular\\principal.java"));
+        int cuentatodoslosmetodosquehayan=0;
+
+
+        
+        while(buscametodosss.hasNext()){
+            String escaneorapido2=  buscametodosss.nextLine();
+            
+            if(escaneorapido2.indexOf("public static void ")!=-1){//  
+                cuentatodoslosmetodosquehayan++;
+                
+                if (escaneorapido2.indexOf("public int ")!=-1) {//
+                    cuentatodoslosmetodosquehayan++;
+                    
+                    if (escaneorapido2.indexOf("public void ")!=-1) {
+                        cuentatodoslosmetodosquehayan++;
+                        
+                        if (escaneorapido2.indexOf("return ")!=-1) {
+                            cuentatodoslosmetodosquehayan++;
+
+                            
+                        }
+                        
+              
+                    }
+
+                    
+                }
+            }
+            
+        }
+        System.out.println("Hay un total de "+cuentatodoslosmetodosquehayan+ " metodos");
+        
+        
+        
+        
+       
+        
+                    
+            
+
+    }
+ 
+    
+}
